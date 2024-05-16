@@ -12,4 +12,6 @@ Checkout the python official website to install https://www.python.org/downloads
 
 To run the assignment execute following command:
 
-`python main.py `
+`python file_name.py `
+
+Replace the file_name that you wish to execute
