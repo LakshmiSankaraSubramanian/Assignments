@@ -104,7 +104,7 @@ def missing_graduation_probability_optimised(days, abs_limit):
     str: A string representing the number of ways to attend over the total possibilities
     Time and Space Complexity
         Time Complexity - O(days*abs_limit) = O(days)
-        Space Complexity: O((days+1) x abs_limit) = O(days)
+        Space Complexity: O((days) x abs_limit) = O(days)
     """
     # Initialize a 2D array to store the number of ways to attend on each day
     attendance_pattern = [[0]*abs_limit for _ in range(days+1)]
