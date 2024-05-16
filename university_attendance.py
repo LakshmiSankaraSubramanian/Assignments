@@ -72,7 +72,7 @@ def missing_graduation_probability(days, abs_limit):
     Returns:
     str: A string representing the fraction of ways to miss the graduation ceremony over the allowed attendance patterns.
 
-    Time and Space Complexity(brute force)
+    Time and Space Complexity
         Time Complexity - O(2^N * N)
         Space Complexity: O(2^N * N)
     """
@@ -102,7 +102,7 @@ def missing_graduation_probability_optimised(days, abs_limit):
 
     Returns:
     str: A string representing the number of ways to attend over the total possibilities
-    Time and Space Complexity(brute force)
+    Time and Space Complexity
         Time Complexity - O(days*abs_limit) = O(days)
         Space Complexity: O((days+1) x abs_limit) = O(days)
     """
