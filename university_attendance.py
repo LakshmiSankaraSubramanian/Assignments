@@ -1,25 +1,42 @@
 '''
-In a university, your attendance determines whether you will be
-allowed to attend your graduation ceremony.
-You are not allowed to miss classes for four or more consecutive days.
-Your graduation ceremony is on the last day of the academic year,
-which is the Nth day.
+Problem Statement  
+    In a university, your attendance determines whether you will be
+    allowed to attend your graduation ceremony.
+    You are not allowed to miss classes for four or more consecutive days.
+    Your graduation ceremony is on the last day of the academic year,
+    which is the Nth day.
 
+    Your task is to determine the following:
 
+        1. The number of ways to attend classes over N days.
+        2. The probability that you will miss your graduation ceremony.
 
-Your task is to determine the following:
+    Represent the solution in the string format as "Answer of (2) / Answer
+    of (1)", don't actually divide or reduce the fraction to decimal
 
-1. The number of ways to attend classes over N days.
-2. The probability that you will miss your graduation ceremony.
+    Test cases:
 
-Represent the solution in the string format as "Answer of (2) / Answer
-of (1)", don't actually divide or reduce the fraction to decimal
+    for 5 days: 14/29
+    for 10 days: 372/773
 
-Test cases:
+Objective
+    To determine the probability of missing a graduation ceremony given the number of days (N) 
+    and the constraint that no more than a certain number 
+    of consecutive absences (abs_limit) are allowed.
+    
+Problem Breakdown
+    Total Number of Patterns: For N days, each day can be either attended (present) or missed (absent), 
+        resulting in 2^N possible attendance patterns.
+        
+    Valid Patterns: Out of these 2^N patterns, we need to filter those that do not have abs_limit or 
+        more consecutive absences.
+    
+    Missing Graduation: From the valid patterns, identify those that end in an absence (indicating 
+        missing the graduation ceremony).
 
-for 5 days: 14/29
-for 10 days: 372/773
-
+Time and Space Complexity
+    Time Complexity - O(2^N * N)
+    Space Complexity: O(2^N * N)
 '''
 import itertools
 
