@@ -33,10 +33,6 @@ Problem Breakdown
     
     Missing Graduation: From the valid patterns, identify those that end in an absence (indicating 
         missing the graduation ceremony).
-
-Time and Space Complexity
-    Time Complexity - O(2^N * N)
-    Space Complexity: O(2^N * N)
 '''
 import itertools
 
@@ -75,6 +71,10 @@ def missing_graduation_probability(days, abs_limit):
 
     Returns:
     str: A string representing the fraction of ways to miss the graduation ceremony over the allowed attendance patterns.
+
+    Time and Space Complexity(brute force)
+        Time Complexity - O(2^N * N)
+        Space Complexity: O(2^N * N)
     """
     absent = 0
     present = 1
@@ -92,7 +92,38 @@ def missing_graduation_probability(days, abs_limit):
     # Return the probability as a fraction string
     return f'{len(missing_graduation_count)}/{len(permitted_combinations)}'
 
+def missing_graduation_probability_optimised(days, abs_limit):
+    """
+    Calculate the number of ways a person can attend graduation and the probability of missing.
+
+    Args:
+    days (int): The number of days
+    abs_limit (int): The limit for abs
+
+    Returns:
+    str: A string representing the number of ways to attend over the total possibilities
+    Time and Space Complexity(brute force)
+        Time Complexity - O(days*abs_limit) = O(days)
+        Space Complexity: O((days+1) x abs_limit) = O(days)
+    """
+    # Initialize a 2D array to store the number of ways to attend on each day
+    attendance_pattern = [[0]*abs_limit for _ in range(days+1)]
+    
+    # Base case: day 0
+    attendance_pattern[0][0] = 1
+
+    for i in range(1, days+1):
+        # Calculate the number of ways to attend on day i
+        attendance_pattern[i][0] = sum(attendance_pattern[i-1][:abs_limit])
+        for j in range(1, abs_limit):
+            attendance_pattern[i][j] = attendance_pattern[i-1][j-1]
+    
+    # Return the result as a string
+    return str(sum(attendance_pattern[days][1:])) + '/' + str(sum(attendance_pattern[days]))
+
+
 if __name__ == '__main__':
     days =  int(input())  # Number of days 
     abs_limit = int(input())  # Absence limit 
     print(missing_graduation_probability(days, abs_limit))  # Calculate and print the probability
+    print(missing_graduation_probability_optimised(days, abs_limit))  # Calculate and print the probability
